@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/sync-sheet.mjs && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync": "node scripts/sync-sheet.mjs"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
