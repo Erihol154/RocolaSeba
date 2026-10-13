@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-outfit: 'Outfit', sans-serif;
+    --font-syne: 'Syne', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    background-color: #090a0f;
+    color: #e2e8f0;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+      radial-gradient(circle at 80% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 10% 40%, rgba(234, 179, 8, 0.04) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: var(--font-outfit);
+  }
+
+  .font-syne {
+    font-family: var(--font-syne);
+  }
+}
+
+/* Custom Vinyl Groove Texture */
+.vinyl-grooves {
+  background: radial-gradient(circle, 
+    #111 0%, #111 12%, 
+    #222 13%, #111 14%, 
+    #252525 15%, #111 16%, 
+    #1f1f1f 18%, #111 20%, 
+    #282828 22%, #111 24%,
+    #222 26%, #111 28%,
+    #292929 32%, #111 36%,
+    #222 40%, #111 44%,
+    #262626 50%, #111 55%,
+    #1d1d1d 65%, #0f0f0f 75%,
+    #252525 85%, #080808 100%
+  );
+  box-shadow: 
+    inset 0 0 15px rgba(0,0,0,0.9),
+    0 8px 25px rgba(0,0,0,0.6);
+}
+
+/* Metallic vinyl shine reflection */
+.vinyl-shine {
+  position: relative;
+  overflow: hidden;
+}
+.vinyl-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 45deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.12) 40deg,
+    transparent 80deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.12) 220deg,
+    transparent 260deg
+  );
+  pointer-events: none;
+  border-radius: 50%;
+  animation: shineRotate 20s linear infinite;
+}
+
+@keyframes shineRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Continuous Vinyl Spin */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spinSlow 3.5s linear infinite;
+}
+
+/* Glassmorphism Card Style */
+.glass-panel {
+  background: rgba(20, 22, 33, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-panel-hover:hover {
+  background: rgba(28, 31, 48, 0.85);
+  border-color: rgba(245, 158, 11, 0.3);
+  box-shadow: 0 12px 35px -10px rgba(245, 158, 11, 0.15);
+}
+
+/* 3D Crate Digging View Styles */
+.crate-perspective {
+  perspective: 1400px;
+  perspective-origin: 50% 30%;
+}
+
+.crate-box {
+  transform-style: preserve-3d;
+}
+
+.crate-wall-front {
+  background: linear-gradient(180deg, #241b12 0%, #150f09 100%);
+  border: 3px solid #42301f;
+  box-shadow: 
+    inset 0 2px 10px rgba(245, 158, 11, 0.2),
+    0 20px 40px rgba(0,0,0,0.8);
+}
+
+.crate-corner-metal {
+  background: linear-gradient(135deg, #d97706 0%, #78350f 100%);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Sleeve in crate 3D animation */
+.crate-sleeve {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, z-index 0.3s;
+  transform-style: preserve-3d;
+}
+
+.crate-sleeve.active {
+  transform: translateY(-85px) translateZ(60px) rotateX(-5deg);
+  box-shadow: 0 25px 50px -12px rgba(245, 158, 11, 0.35);
+  z-index: 50;
+}
+
+/* Vinyl slide out from sleeve */
+.vinyl-disc-pullout {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.group:hover .vinyl-disc-pullout {
+  transform: translateX(45%) rotate(180deg);
+}
+
+/* Tonearm Animation */
+.tonearm {
+  transform-origin: 20px 20px;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tonearm.playing {
+  transform: rotate(26deg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #272a3b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
